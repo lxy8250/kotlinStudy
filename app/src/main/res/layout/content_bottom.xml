@@ -6,16 +6,30 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.lxy.kotlinstudy.BottomActivity"
+    tools:context="com.lxy.kotlinstudy.MainActivity"
     tools:showIn="@layout/app_bar_bottom">
 
     <android.support.v4.view.ViewPager
         android:id="@+id/main_pager"
         android:layout_weight="1"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
     </android.support.v4.view.ViewPager>
+
+    <FrameLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <fragment
+            android:id="@+id/home_fragment"
+            android:name="com.lxy.kotlinstudy.ui.HomeFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </FrameLayout>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/main_navigation"

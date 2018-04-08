@@ -1,9 +1,8 @@
 package com.lxy.kotlinstudy.net
 
+import com.lxy.kotlinstudy.net.modle.ArticleModel
 import com.lxy.kotlinstudy.net.modle.LoginModel
 import io.reactivex.Observable
-import okhttp3.ResponseBody
-import retrofit2.Call
 import retrofit2.http.*
 
 /**
@@ -22,8 +21,8 @@ interface NetServer {
               @Query("repassword") repassword : String): Observable<LoginModel>
 
 
-    @GET("navi/json")
-    fun getNavi() : Call<ResponseBody>
+    @GET("article/list/{page}/json")
+    fun homeArticle(@Path("page") page : Int) : Observable<ArticleModel>
 
 
 }

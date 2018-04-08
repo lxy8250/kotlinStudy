@@ -35,7 +35,7 @@ class LoginActivity : AppCompatActivity() ,View.OnClickListener{
                             responseData : LoginModel ->
                             Log.i("net",responseData.errorCode.toString())
                             var intent = Intent()
-                            intent.setClass(this@LoginActivity,BottomActivity::class.java)
+                            intent.setClass(this@LoginActivity,MainActivity::class.java)
                             startActivity(intent)
 
                         }, {
