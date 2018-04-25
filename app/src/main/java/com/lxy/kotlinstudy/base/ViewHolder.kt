@@ -6,15 +6,17 @@ import android.util.SparseArray
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import org.w3c.dom.Text
 
 /**
  * Created by Administrator on 2018/4/5.
  */
 class ViewHolder : RecyclerView.ViewHolder {
 
-     var views : SparseArray<View>
-     var convertView : View
-     var context : Context
+     val views : SparseArray<View>
+     val convertView : View
+     val context : Context
      var pos : Int = 0
 
      constructor( context :Context, convertView : View, parent : ViewGroup) : super(convertView) {
@@ -50,6 +52,11 @@ class ViewHolder : RecyclerView.ViewHolder {
 
     fun updatePosition(position : Int){
         this.pos = position
+    }
+
+    fun setText(viewId: Int,text : String){
+        var view = getView<TextView>(viewId)
+        view.text = text
     }
 
 }

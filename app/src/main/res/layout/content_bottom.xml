@@ -20,14 +20,10 @@
 
     <FrameLayout
         android:layout_weight="1"
+        android:id="@+id/main_fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <fragment
-            android:id="@+id/home_fragment"
-            android:name="com.lxy.kotlinstudy.ui.HomeFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
 
     </FrameLayout>
 

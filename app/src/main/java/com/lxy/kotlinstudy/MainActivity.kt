@@ -3,16 +3,24 @@ package com.lxy.kotlinstudy
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.design.widget.NavigationView
+import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import com.lxy.kotlinstudy.ui.fragment.HomeFragment
+import com.lxy.kotlinstudy.ui.fragment.KnowledgeSystemFragment
 import kotlinx.android.synthetic.main.activity_bottom.*
 import kotlinx.android.synthetic.main.app_bar_bottom.*
 import kotlinx.android.synthetic.main.content_bottom.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+    var knowFrag : KnowledgeSystemFragment? = null
+    lateinit var homeFrag : HomeFragment
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,12 +36,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         nav_view.setNavigationItemSelectedListener(this)
         main_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-        initViewPager()
+
+        homeFrag = HomeFragment()
+        addFragment(homeFrag)
     }
 
-    private fun initViewPager() {
-
-    }
 
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
@@ -82,10 +89,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         when (item.itemId) {
             R.id.navigation_home -> {
                 toolbar.setTitle(R.string.title_home)
+                addFragment(homeFrag)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_dashboard -> {
                 toolbar.setTitle(R.string.title_knowledge_system)
+                if (knowFrag == null){
+                    knowFrag = KnowledgeSystemFragment()
+                }
+                addFragment(knowFrag!!)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_notifications -> {
@@ -95,4 +107,24 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
         false
     }
+
+    private fun addFragment(fragment: Fragment){
+
+        if (!supportFragmentManager.fragments.contains(fragment)) {
+            supportFragmentManager.beginTransaction()
+                    .add(R.id.main_fragment, fragment)
+                    .commit()
+        }
+        var transaction = supportFragmentManager.beginTransaction()
+        for (frag in supportFragmentManager.fragments){
+            if (frag.equals(fragment)){
+                transaction.show(fragment)
+            }else{
+                transaction.hide(frag)
+            }
+        }
+        transaction.commit()
+
+    }
+
 }

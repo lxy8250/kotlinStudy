@@ -39,9 +39,11 @@ class ArticleAdapter(private val items: List<Datas>) : RecyclerView.Adapter<Arti
         holder!!.tvTitle.text = itemData.title
 
         if (itemData.tags.isNotEmpty()){
+            var string = ""
             for (tag in itemData.tags) {
-                holder!!.tvTag.text = "${tag.name} & ${holder!!.tvTag.text}"
+                string = "${tag.name} & $string "
             }
+            holder!!.tvTag.text = string
         }
         holder!!.tvTime.text = itemData.niceDate
 

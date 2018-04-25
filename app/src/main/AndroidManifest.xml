@@ -27,7 +27,8 @@
         <activity android:name=".LoginActivity">
 
         </activity>
-        <activity android:name=".ui.DetailActivity" />
+        <activity android:name=".ui.activity.DetailActivity" />
+        <activity android:name=".ui.activity.HoziScrollActivity" />
     </application>
 
 </manifest>
