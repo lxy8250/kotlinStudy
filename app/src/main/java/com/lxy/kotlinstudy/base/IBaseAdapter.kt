@@ -39,4 +39,6 @@ abstract class IBaseAdapter<T>( val context : Context?,
 
     abstract fun bindData(holder: ViewHolder?,t : T)
 
+
+
 }

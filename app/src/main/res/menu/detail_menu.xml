@@ -5,4 +5,12 @@
     <item android:id="@+id/detail_love"
         android:title="@string/zan"
         app:showAsAction="never" />
+
+    <item android:id="@+id/detail_share"
+        android:title="@string/share"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/detail_other"
+        android:title="@string/other"
+        app:showAsAction="never" />
 </menu>

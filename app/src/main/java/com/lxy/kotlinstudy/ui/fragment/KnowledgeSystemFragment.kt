@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.gson.Gson
 import com.lxy.kotlinstudy.R
 import com.lxy.kotlinstudy.adapter.ArticleAdapter
 import com.lxy.kotlinstudy.adapter.KnowledgeAdapter
@@ -57,7 +58,7 @@ class KnowledgeSystemFragment : Fragment() {
         adapter.setOnIClickListener(object : IBaseAdapter.OnIClickListener{
             override fun onClick(view: View, position: Int) {
                 var intent = Intent(context,HoziScrollActivity::class.java)
-                intent.putExtra("","")
+                intent.putExtra("knowString",Gson().toJson(dataList[position]))
                 startActivity(intent)
             }
         })
